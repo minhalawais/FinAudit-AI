@@ -1,0 +1,7 @@
+# filepath: /d:/PycharmProjects/finaudit-ai/.gitignore
+node_modules/
+backend/venv/
+backend/.env
+backend/alembic/
+backend/alembic.ini
+

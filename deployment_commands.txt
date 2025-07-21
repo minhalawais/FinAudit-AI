@@ -1,0 +1,161 @@
+Complete Deployment Guide for finaudit.live
+Here's a step-by-step guide to deploy your React + FastAPI + PostgreSQL application on your DigitalOcean droplet with domain finaudit.live.
+
+Prerequisites
+Ubuntu 22.04 server with your domain pointing to it
+
+SSH access to your server
+
+Your code in /home/deploy/finaudit-ai (React) and /home/deploy/finaudit-ai/backend (FastAPI)
+
+Step 1: Server Setup
+Connect to your server
+bash
+ssh deploy@your_server_ip
+Update system packages
+bash
+sudo apt update && sudo apt upgrade -y
+Step 2: Install Required Software
+Install Node.js, npm, and PM2
+bash
+curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+sudo apt-get install -y nodejs
+sudo npm install -g pm2
+Install Python and pip
+bash
+sudo apt install python3 python3-pip python3-venv -y
+Install PostgreSQL
+bash
+sudo apt install postgresql postgresql-contrib -y
+sudo systemctl start postgresql
+sudo systemctl enable postgresql
+Install Nginx
+bash
+sudo apt install nginx -y
+sudo systemctl start nginx
+sudo systemctl enable nginx
+Step 3: Configure PostgreSQL
+Create database and user
+bash
+sudo -u postgres psql -c "CREATE DATABASE finaudit;"
+sudo -u postgres psql -c "CREATE USER finaudit_user WITH PASSWORD 'your_secure_password';"
+sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE finaudit TO finaudit_user;"
+Configure remote access (optional)
+Edit PostgreSQL config files:
+
+bash
+sudo nano /etc/postgresql/14/main/postgresql.conf
+Uncomment/edit:
+
+listen_addresses = '*'
+Edit pg_hba.conf:
+
+bash
+sudo nano /etc/postgresql/14/main/pg_hba.conf
+Add:
+
+host    finaudit     finaudit_user     0.0.0.0/0               md5
+Restart PostgreSQL:
+
+bash
+sudo systemctl restart postgresql
+Step 4: Deploy FastAPI Backend
+Navigate to backend directory
+bash
+cd /home/deploy/finaudit-ai/backend
+Create virtual environment
+bash
+python3 -m venv venv
+source venv/bin/activate
+Install dependencies
+bash
+pip install -r requirements.txt
+Set up environment variables
+bash
+nano .env
+Add:
+
+DATABASE_URL=postgresql://postgres:M.m03007493358@localhost:5432/finaudit
+SECRET_KEY=your_secret_key_here
+
+Run database migrations (if applicable)
+bash
+alembic upgrade head
+Test the backend
+bash
+uvicorn main:app --host 0.0.0.0 --port 8000
+Set up PM2 for backend
+bash
+pm2 start "uvicorn main:app --host 0.0.0.0 --port 8000" --name finaudit-backend
+pm2 save
+pm2 startup
+Step 5: Deploy React Frontend
+Navigate to frontend directory
+bash
+cd /home/deploy/finaudit-ai
+Install dependencies
+bash
+npm install
+Build production version
+bash
+npm run build
+Set up PM2 for frontend
+bash
+pm2 serve build 3000 --name finaudit-frontend --spa
+pm2 save
+Step 6: Configure Nginx
+Create Nginx config
+bash
+sudo nano /etc/nginx/sites-available/finaudit.live
+Add this configuration:
+
+nginx
+server {
+    listen 80;
+    server_name finaudit.live www.finaudit.live;
+
+    location / {
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
+    location /api {
+        proxy_pass http://localhost:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
+    location /static {
+        alias /home/deploy/finaudit-ai/build/static;
+        expires 1y;
+        add_header Cache-Control "public";
+    }
+}
+Enable the site
+bash
+sudo ln -s /etc/nginx/sites-available/finaudit.live /etc/nginx/sites-enabled/
+sudo rm /etc/nginx/sites-enabled/default
+sudo nginx -t
+sudo systemctl restart nginx
+Step 7: Set Up SSL with Let's Encrypt
+Install Certbot
+bash
+sudo apt install certbot python3-certbot-nginx -y
+Obtain SSL certificate
+bash
+sudo certbot --nginx -d finaudit.live -d www.finaudit.live
+Set up auto-renewal
+bash
+sudo certbot renew --dry-run
+Step 8: Final Checks
+Verify services are running
+bash
+pm2 list
+sudo systemctl status nginx
+sudo systemctl status postgresql

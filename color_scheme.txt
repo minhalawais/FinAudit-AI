@@ -1,0 +1,19 @@
+Base Colors:
+Primary Background (#F8FAFC): A very soft blue-gray that's easy on the eyes
+Secondary Background (#FFFFFF): Pure white for cards and elevated elements
+Navy Blue (#003366): Kept for primary actions and headers
+Slate Gray (#64748B): For secondary text and icons
+Accent Colors:
+Soft Gold (#F59E0B): A warmer, more muted gold for highlights and important actions
+Success Green (#059669): A softer emerald green for success states
+Warning Orange (#F97316): For warnings and medium-priority alerts
+Error Red (#DC2626): For critical errors and important alerts
+Neutral Colors:
+Light Border (#E2E8F0): For subtle separators and borders
+Hover State (#F1F5F9): For hover effects on interactive elements
+Muted Text (#94A3B8): For secondary information and disabled states
+Dark Text (#1E293B): For primary text content
+Gradient Suggestions:
+Header Gradient: from-[#003366] to-[#004D99]
+Success Gradient: from-[#059669] to-[#047857]
+Accent Gradient: from-[#F59E0B] to-[#D97706]

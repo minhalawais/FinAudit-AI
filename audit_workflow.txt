@@ -1,0 +1,72 @@
+Core Workflow (Document-Centric Audit Process)
+Step 1: Audit Planning
+Audit Creation
+
+Auditors define scope (e.g., "Q3 2024 Expense Reports").
+
+Assign auditees (teams/users who will upload documents).
+
+Set deadlines and risk categories (e.g., "High Risk: Vendor Payments").
+
+AI-Powered Sampling Requests
+
+Auditors request documents via:
+
+Manual Selection: Specify filenames/categories.
+
+AI Suggestions: System flags high-risk files (e.g., invoices > $10K).
+
+Step 2: Document Submission by Auditee
+Upload Portal
+
+Auditees upload requested files (PDF invoices, CSV ledgers, receipt images).
+
+Metadata tagging (e.g., "Vendor: XYZ", "Fiscal Year: 2024").
+
+Automated Validation
+
+File integrity checks (e.g., no tampering).
+
+OCR for text extraction (to enable search/AI analysis).
+
+Step 3: AI-Assisted Audit Testing
+Key Features:
+
+Anomaly Detection
+
+Flags inconsistencies (e.g., mismatched amounts in CSV vs. PDF).
+
+Compliance Checks
+
+Validates against rules (e.g., "All invoices > $5K require approval").
+
+Pattern Recognition
+
+Identifies duplicates or unusual trends (e.g., repeated payments to a vendor).
+
+Auditor Tools:
+
+Document Comparison: Side-by-side view of similar files.
+
+Search with NLP: Queries like "Show non-compliant expense reports."
+
+Step 4: Findings & Reporting
+Auditor Workflow:
+
+Review AI-generated flags.
+
+Add manual findings (e.g., "Missing signature on Invoice #123").
+
+Assign severity (Critical/Major/Minor).
+
+Auto-Generated Reports
+
+PDF/Excel: Summary of findings, evidence links, and recommendations.
+
+Dashboard: Visual trends (e.g., "80% of errors are from Vendor A").
+
+Step 5: Follow-Up & Resolution
+Auditees respond to findings within the system (upload corrected files or comments).
+
+Audit trail logs all actions (who reviewed/resolved what).
+

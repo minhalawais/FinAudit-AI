@@ -1,0 +1,132 @@
+Step-by-Step Audit Workflow (Auditee Perspective)
+Your software automates and simplifies the audit process for auditees (companies being audited). Here’s how it works:
+
+1. Auditee Onboarding & Auditor Assignment
+The auditee (company admin) signs up and logs into the system.
+
+They add an auditor by:
+
+Entering the auditor’s email.
+
+The system auto-generates a temporary password and sends it to the auditor.
+
+The auditor receives an email with login credentials and a link to access the Auditor Portal.
+
+The auditee can assign permissions (e.g., view-only, submit requests, approve findings).
+
+2. Audit Creation (Auditee or Auditor)
+The auditor (or sometimes the auditee) creates a new audit:
+
+Defines scope (e.g., "Q3 2024 Vendor Payments > $10K").
+
+Sets a deadline for document submission.
+
+The system auto-schedules a Kickoff Meeting (48 hours later) with both parties.
+
+3. Document Request & Submission (Auditee’s Responsibility)
+The auditor (or system AI) requests documents (e.g., invoices, receipts, contracts).
+
+The auditee receives notifications (email + dashboard alert) with:
+
+A list of required documents.
+
+Deadlines for submission.
+
+Metadata requirements (e.g., vendor name, date, amount).
+
+The auditee uploads documents via:
+
+Guided Upload Wizard (ensures correct format, metadata, and signatures).
+
+Drag-and-drop for bulk uploads (PDFs, CSV files).
+
+Auto-validation (checks for tampering, missing fields).
+
+4. Automated Document Validation (System Checks)
+The system performs:
+
+SHA-256 Hash Check (ensures no tampering).
+
+Metadata Completeness Check (flags missing fields).
+
+OCR & Data Extraction (for automated analysis).
+
+If issues are found:
+
+The auditee gets real-time feedback (e.g., "Missing approval signature").
+
+They can resubmit corrected documents before the deadline.
+
+5. AI-Assisted Audit Testing (Auditor’s Role)
+The auditor reviews documents in their portal:
+
+AI flags anomalies (e.g., duplicate invoices, mismatched amounts).
+
+Side-by-side comparison (e.g., invoice vs. payment record).
+
+1-Click Meeting Request if urgent issues arise.
+
+The auditee is notified if findings require their response.
+
+6. Findings & Corrective Actions
+The auditor logs findings (Critical/Major/Minor):
+
+Critical (24h resolution): Auto-notifies executives.
+
+Major (72h resolution): Assigned to department heads.
+
+Minor (7d resolution): Team lead follow-up.
+
+The auditee can:
+
+Respond to findings (upload corrective evidence).
+
+Request extensions if needed.
+
+Track progress in their dashboard.
+
+7. Exit Conference & Report Generation
+The system auto-schedules an Exit Meeting:
+
+Presents final findings.
+
+Discusses corrective action plans.
+
+The auditee receives a Final Audit Report (PDF/Excel):
+
+Clickable links to source documents.
+
+Visual timeline of audit milestones.
+
+Compliance score (for internal review).
+
+8. Follow-Up & Audit Closure
+The system tracks corrective actions:
+
+Sends reminders for overdue items.
+
+Auto-escalates unresolved issues.
+
+Once resolved:
+
+The audit is marked "Closed".
+
+Documents are archived in WORM storage (immutable for compliance).
+
+How the Document Module is Already Integrated
+Your existing Document Module (from FYP 1) provides the foundation:
+
+Document Upload & OCR: Auditees can upload PDFs/CSVs, and text is extracted automatically.
+
+Version Control: All revisions are tracked; no documents are lost.
+
+Secure Storage: Encryption + blockchain for tamper-proofing.
+
+Search & Retrieval: Auditors can quickly find documents by metadata.
+
+Key Selling Points for Auditees
+✅ Easy Auditor Onboarding – Just add an email; the system handles invites.
+✅ Automated Document Checks – No more back-and-forth over missing files.
+✅ Real-Time Notifications – Alerts for deadlines, findings, and meetings.
+✅ Compliance-Ready – Immutable logs and WORM storage for audits.
+✅ AI-Powered Risk Detection – Catches errors before auditors do.
