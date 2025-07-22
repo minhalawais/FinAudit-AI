@@ -1,46 +1,162 @@
-# Getting Started with Create React App
+# FinAudit-AI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**FinAudit-AI** is an intelligent, document-centric platform designed to automate and enhance the financial audit process for organizations. Leveraging advanced AI, secure storage, and a modern workflow engine, FinAudit-AI streamlines every aspect of auditing—from planning and document collection to anomaly detection, compliance checks, reporting, and follow-up.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Table of Contents
 
-### `npm start`
+- [Overview](#overview)
+- [Core Features](#core-features)
+- [Workflow](#workflow)
+- [Architecture](#architecture)
+- [Technologies Used](#technologies-used)
+- [How It Works](#how-it-works)
+- [Getting Started](#getting-started)
+- [Screenshots](#screenshots)
+- [Contributing](#contributing)
+- [License](#license)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+---
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Overview
 
-### `npm test`
+FinAudit-AI seeks to modernize the audit process by automating repetitive tasks, flagging risks proactively, and ensuring compliance with industry standards. The platform supports both auditors and auditees with guided workflows, secure document handling, and real-time AI insights.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **For Auditors:** AI-assisted testing, smart sampling, anomaly detection, historical insights, and compliance validation.
+- **For Auditees:** Easy onboarding, automated document validation, real-time notifications, and compliance-ready evidence management.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Core Features
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Audit Planning & Creation:** Define audit scope, assign teams, set deadlines, and categorize risk.
+- **AI-Powered Sampling:** Automatically suggest high-risk documents for review.
+- **Document Submission Portal:** Secure, guided, and bulk uploads with metadata tagging and automated checks.
+- **Automated Validation:** OCR, integrity checks (SHA-256), tamper detection, and completeness validation.
+- **AI-Assisted Testing:** Anomaly detection, compliance checks, pattern recognition, and NLP-powered search.
+- **Findings & Corrective Actions:** Severity-based findings, automated notifications, evidence upload, and tracking of resolution.
+- **Reporting:** Auto-generated PDF/Excel audit reports, visual dashboards, and compliance scores.
+- **Audit Trail & Version Control:** Immutable logs, blockchain/WORM storage, and revision history.
+- **Security & Compliance:** Encryption, secure access, and industry-standard frameworks (SOX, GAAP, GDPR).
+- **User Experience:** Real-time notifications, guided onboarding, and intuitive dashboards.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## Workflow
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. **Audit Initiation**
+   - Onboard auditees and auditors.
+   - Define scope, deadlines, and risk categories.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. **Document Requests**
+   - Manual and AI-suggested sampling.
+   - Auditees receive notifications and upload required documents.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+3. **Submission & Validation**
+   - Guided upload wizard, bulk uploads, and auto-validation.
+   - Real-time feedback on missing or incorrect files.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+4. **AI-Assisted Audit Testing**
+   - Anomaly detection, compliance validation, side-by-side document comparison.
+   - NLP search and automated findings.
 
-## Learn More
+5. **Findings & Actions**
+   - Log and assign findings by severity.
+   - Auditees respond with corrective actions and evidence.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+6. **Reporting & Closure**
+   - Auto-generated reports and dashboards.
+   - Final audit closure and secure archival.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
+
+## Architecture
+
+- **Frontend:** React/TypeScript (modern dashboards, upload portal, notifications)
+- **Backend:** Python (FastAPI), modular microservices for audit, findings, document processing, and AI integrations.
+- **AI Engines:** Integrations with Gemini, DeepSeek, OpenAI, Grok AI for document analysis and smart recommendations.
+- **Storage:** Secure, encrypted, immutable document storage (WORM/blockchain).
+- **Database:** Relational models for users, audits, findings, documents, and workflow states.
+
+---
+
+## Technologies Used
+
+- **Frontend:** React, TypeScript, Tailwind CSS
+- **Backend:** FastAPI (Python), SQLAlchemy
+- **AI Services:** Gemini, DeepSeek, OpenAI, Grok AI
+- **OCR & Document Processing:** Tesseract, PDF/CSV parsing
+- **Security:** SHA-256, Encryption, Blockchain/WORM storage
+- **Other:** Docker, Vercel, Postgres
+
+---
+
+## How It Works
+
+- **Onboarding:** Auditees and auditors are invited via email; permissions and roles are assigned.
+- **Audit Creation:** Auditors create audits, define scope, and set deadlines.
+- **Document Handling:** Auditees upload documents, which are auto-validated and processed by AI for anomalies and compliance issues.
+- **Findings & Insights:** AI and manual findings are logged, tracked, and visualized; auditees can respond and resolve issues.
+- **Reporting:** Final reports are generated automatically, including evidence links and compliance scores.
+- **Archival:** All documents and logs are securely stored for future reference and regulatory compliance.
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (for frontend)
+- Python 3.8+ (for backend)
+- Docker (recommended for deployment)
+- Postgres database
+
+### Installation
+
+**Frontend:**
+```bash
+cd frontend
+npm install
+npm start
+```
+
+**Backend:**
+```bash
+cd backend
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload
+```
+
+**Database:**
+- Setup Postgres and update connection settings in `backend/app/config.py`
+
+**Docker:**
+```bash
+docker-compose up --build
+```
+
+### Configuration
+
+- Set up environment variables for AI API keys (Gemini, DeepSeek, OpenAI).
+- Configure storage and security settings as needed.
+
+---
+
+## Contributing
+
+Contributions are welcome! Please open issues or submit pull requests for enhancements, bug fixes, or documentation improvements.
+
+---
+
+## License
+
+MIT License
+
+---
+
+## Contact
+
+For questions, suggestions, or demo requests, reach out via [GitHub Issues](https://github.com/minhalawais/FinAudit-AI/issues).
